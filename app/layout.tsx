@@ -1,5 +1,8 @@
 import { GeistSans } from "geist/font/sans";
+import { Theme, ThemePanel } from "@radix-ui/themes";
 import "./globals.css";
+
+import "@radix-ui/themes/styles.css";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -19,9 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={GeistSans.className}>
       <body className="bg-background text-foreground">
-        <main className="min-h-screen flex flex-col items-center">
-          {children}
-        </main>
+        <Theme>
+          <main className="min-h-screen flex flex-col items-center">
+            {children}
+          </main>
+          <ThemePanel />
+        </Theme>
       </body>
     </html>
   );
